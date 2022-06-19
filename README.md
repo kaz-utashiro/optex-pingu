@@ -1,6 +1,7 @@
+[![Actions Status](https://github.com/kaz-utashiro/optex-pingu/workflows/test/badge.svg)](https://github.com/kaz-utashiro/optex-pingu/actions) [![MetaCPAN Release](https://badge.fury.io/pl/App-optex-pingu.svg)](https://metacpan.org/release/App-optex-pingu)
 # NAME
 
-pingu - optex pingu filter
+pingu - optex make-everything-pingu filter
 
 # SYNOPSIS
 
@@ -17,7 +18,11 @@ to the original author.
     <p><img width="750" src="https://raw.githubusercontent.com/kaz-utashiro/optex-pingu/main/images/pingu-black.png">
 </div>
 
-This module is quite good example to demonstrate [optex(1)](http://man.he.net/man1/optex) command
+<div>
+    <p><img width="750" src="https://raw.githubusercontent.com/kaz-utashiro/optex-pingu/main/images/pingu-white.png">
+</div>
+
+This module is a quite good example to demonstrate [optex(1)](http://man.he.net/man1/optex) command
 features.
 
 # OPTION
@@ -85,6 +90,9 @@ features.
 
 Other file format is not supported yet.
 
+Coloring is done by [Getopt::EX::Colormap](https://metacpan.org/pod/Getopt%3A%3AEX%3A%3AColormap) module.  See its document
+for detail.
+
 # INSTALL
 
 Use [cpanminus(1)](http://man.he.net/man1/cpanminus) command:
@@ -105,20 +113,21 @@ function.  Next command will make symbolic link `pingu->optex` in
     $ optex --ln pingu
 
 Executing this symbolic link, optex will call system installed
-**pingu** command.  So make alias in `~/.optex.d/config.toml` to call
-[ping(1)](http://man.he.net/man1/ping) command instead:
+**pingu** command.  So make an alias in `~/.optex.d/config.toml` to
+call [ping(1)](http://man.he.net/man1/ping) command instead:
 
     [alias]
         pingu = "ping -Mpingu --pingu"
 
-# MAKING PINGU OPTION
+# MAKING NEW PING OPTION
 
-You can add, say, **--with-pingu** option to [ping(1)](http://man.he.net/man1/ping) command.  Make
-symbolic link `ping->optex` in `~/.optex.d/bin` directory:
+You can add, say, **--with-pingu** option to the original [ping(1)](http://man.he.net/man1/ping)
+command.  Make a symbolic link `ping->optex` in `~/.optex.d/bin`
+directory:
 
     $ optex --ln ping
 
-And create rc file `~/.optex.d/ping.rc` for **ping**:
+And create an rc file `~/.optex.d/ping.rc` for **ping**:
 
     option --with-pingu -Mpingu --pingu
 
@@ -128,7 +137,7 @@ Then pingu will show up when you use **--with-pingu** option to execute
     $ ping --with-pingu localhost -c15
 
 If you want to enable this option always (really?), put next line in
-you `~/.optex.d/ping.rc`:
+your `~/.optex.d/ping.rc`:
 
     option default --with-pingu
 

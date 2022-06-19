@@ -13,7 +13,7 @@ use Data::Dumper;
 
 =head1 NAME
 
-pingu - optex pingu filter
+pingu - optex make-everything-pingu filter
 
 =head1 SYNOPSIS
 
@@ -32,7 +32,13 @@ to the original author.
 
 =end html
 
-This module is quite good example to demonstrate L<optex(1)> command
+=begin html
+
+<p><img width="750" src="https://raw.githubusercontent.com/kaz-utashiro/optex-pingu/main/images/pingu-white.png">
+
+=end html
+
+This module is a quite good example to demonstrate L<optex(1)> command
 features.
 
 =head1 OPTION
@@ -108,6 +114,9 @@ Default pingu image:
 
 Other file format is not supported yet.
 
+Coloring is done by L<Getopt::EX::Colormap> module.  See its document
+for detail.
+
 =head1 INSTALL
 
 Use L<cpanminus(1)> command:
@@ -128,20 +137,21 @@ F<~/.optex.d/bin> directory:
     $ optex --ln pingu
 
 Executing this symbolic link, optex will call system installed
-B<pingu> command.  So make alias in F<~/.optex.d/config.toml> to call
-L<ping(1)> command instead:
+B<pingu> command.  So make an alias in F<~/.optex.d/config.toml> to
+call L<ping(1)> command instead:
 
     [alias]
         pingu = "ping -Mpingu --pingu"
 
-=head1 MAKING PINGU OPTION
+=head1 MAKING NEW PING OPTION
 
-You can add, say, B<--with-pingu> option to L<ping(1)> command.  Make
-symbolic link C<< ping->optex >> in F<~/.optex.d/bin> directory:
+You can add, say, B<--with-pingu> option to the original L<ping(1)>
+command.  Make a symbolic link C<< ping->optex >> in F<~/.optex.d/bin>
+directory:
 
     $ optex --ln ping
 
-And create rc file F<~/.optex.d/ping.rc> for B<ping>:
+And create an rc file F<~/.optex.d/ping.rc> for B<ping>:
 
     option --with-pingu -Mpingu --pingu
 
@@ -151,7 +161,7 @@ L<ping(1)> command:
     $ ping --with-pingu localhost -c15
 
 If you want to enable this option always (really?), put next line in
-you F<~/.optex.d/ping.rc>:
+your F<~/.optex.d/ping.rc>:
 
     option default --with-pingu
 
