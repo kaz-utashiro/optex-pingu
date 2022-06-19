@@ -87,6 +87,8 @@ represent normal ANSI color and lower-case means high-intensity color.
     K  k  Black
     W  w  White
 
+Line start with C<#> is treated as a comment.
+
 Default pingu image:
 
      ...        .     ...   ..    ..     .........           
@@ -218,6 +220,7 @@ sub read_asc {
     my $file = shift;
     open my $fh, '<', $file or die "$file: $!\n";
     local $_ = do { local $/; <$fh> };
+    s/^#.*\n//mg;
     s{ (?<str>(?<col>[RGBCMYWK])\g{-1}*) }{
 	colorize($+{col}, $param{char} x length($+{str}))
     }xgie;

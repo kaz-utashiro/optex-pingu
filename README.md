@@ -65,6 +65,8 @@ features.
         K  k  Black
         W  w  White
 
+    Line start with `#` is treated as a comment.
+
     Default pingu image:
 
          ...        .     ...   ..    ..     .........           
