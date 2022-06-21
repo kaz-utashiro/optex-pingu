@@ -66,6 +66,10 @@ order.
 Specify replacement character.  Default is Unicode C<FULL BLOCK>
 (U+2588: █).
 
+=item B<--pingu-interval>=I<sec>
+
+Set interval time between printing each lines.  Default is zero.
+
 =back
 
 =head1 IMAGE FILE FORMAT
@@ -171,7 +175,11 @@ your F<~/.optex.d/ping.rc>:
 
 L<https://github.com/sheepla/pingu>
 
-L<App::optex>
+L<App::optex>,
+L<https://github.com/kaz-utashiro/optex/>
+
+L<App::optex::pingu>,
+L<https://github.com/kaz-utashiro/optex-pingu/>
 
 =head1 AUTHOR
 
@@ -186,15 +194,17 @@ as Perl itself.
 
 =cut
 
-use File::Share qw(:all);
-my $image_dir = $ENV{OPTEX_PINGU_IMAGEDIR} //= dist_dir 'App-optex-pingu';
-
+use File::Share qw(dist_dir);
 use List::Util qw(first);
 use Getopt::EX::Colormap qw(colorize);
+use Time::HiRes qw(usleep);
+
+my $image_dir = $ENV{OPTEX_PINGU_IMAGEDIR} //= dist_dir 'App-optex-pingu';
 
 our %param = (
     char => '█',
     repeat => 1,
+    interval => 0,
     );
 
 my %reader = (
@@ -221,7 +231,7 @@ sub read_asc {
     open my $fh, '<', $file or die "$file: $!\n";
     local $_ = do { local $/; <$fh> };
     s/^#.*\n//mg;
-    s{ (?<str>(?<col>[RGBCMYWK])\g{-1}*) }{
+    s{ (?<str>(?<col>[RGBCMYWK])\g{col}*) }{
 	colorize($+{col}, $param{char} x length($+{str}))
     }xgie;
     /.+/g;
@@ -233,8 +243,10 @@ sub pingu {
     my $name = $opt{name} || 'pingu';
     my @image = get_image($name);
     my $i = 0;
+    my $sleep = $param{interval} > 0 ? $param{interval} * 1000000 : 0;
     while (<>) {
 	print $image[$i++ % @image], $_;
+	usleep $sleep if $sleep > 0;
     }
 }
 
@@ -253,6 +265,8 @@ __DATA__
 mode function
 
 option --pingu-char &set(char=$<shift>)
+
+option --pingu-interval &set(interval=$<shift>)
 
 option --pingu-image -Mutil::filter --osub __PACKAGE__::pingu(name=$<shift>)
 
