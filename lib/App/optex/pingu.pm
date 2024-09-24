@@ -148,7 +148,7 @@ B<pingu> command.  So make an alias in F<~/.optex.d/config.toml> to
 call L<ping(1)> command instead:
 
     [alias]
-        pingu = "ping -Mpingu --pingu"
+        pingu = "ping -Mpingu"
 
 =head1 MAKING NEW PING OPTION
 
@@ -160,17 +160,17 @@ directory:
 
 And create an rc file F<~/.optex.d/ping.rc> for B<ping>:
 
-    option --with-pingu -Mpingu --pingu
+    option --pingu -Mpingu
 
 Then pingu will show up when you use B<--with-pingu> option to execute
 L<ping(1)> command:
 
-    $ ping --with-pingu localhost -c15
+    $ ping --pingu localhost -c15
 
 If you want to enable this option always (really?), put next line in
 your F<~/.optex.d/ping.rc>:
 
-    option default --with-pingu
+    option default --pingu
 
 =head1 SEE ALSO
 
@@ -297,6 +297,9 @@ sub set {
 1;
 
 __DATA__
+
+# define --pingu for backward compatibility
+option --pingu $<ignore>
 
 #  LocalWords:  pingu optex asc Unicode Cyan cpanminus cpanm rc
 #  LocalWords:  localhost Kazumasa Utashiro
