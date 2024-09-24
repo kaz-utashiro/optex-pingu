@@ -200,6 +200,7 @@ use List::Util qw(first pairmap);
 use Getopt::EX::Colormap qw(colorize);
 use Time::HiRes qw(usleep);
 use Scalar::Util;
+use Hash::Util qw(lock_keys);
 *is_number = \&Scalar::Util::looks_like_number;
 
 my $image_dir = $ENV{OPTEX_PINGU_IMAGEDIR} //= dist_dir 'App-optex-pingu';
@@ -211,6 +212,7 @@ our %opt = (
     repeat   => 1,
     interval => 0.1,
     );
+lock_keys %opt;
 
 sub hash_to_spec {
     pairmap {
@@ -286,7 +288,7 @@ sub pingu {
 
 sub set {
     while (my($k, $v) = splice(@_, 0, 2)) {
-	exists $opt{$k} or next;
+	exists $opt{$k} or die "$k: invaid paraeter.\n";
 	$opt{$k} = $v;
     }
     ();
