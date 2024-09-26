@@ -1,0 +1,116 @@
+#!/usr/bin/env perl
+use v5.24;
+use warnings;
+use utf8;
+
+use Data::Dumper;
+use List::Util qw(pairs zip);
+use Term::ANSIColor::Concise qw(ansi_color);
+$Term::ANSIColor::Concise::NO_RESET_EL = 1;
+
+use constant {
+    UHB => "\N{UPPER HALF BLOCK}",
+    LHB => "\N{LOWER HALF BLOCK}",
+};
+my $color_re = qr/[rgbcmykw]/i;
+
+sub image {
+    my $data = shift;
+    my @data = grep !/^\s*#/, $data =~ /.+/g;
+    my @image;
+    for (pairs @data) {
+	my($hi, $lo) = @$_;
+	my $line;
+	for (zip [ split //, $hi ], [ split //, $lo ]) {
+	    my($hi, $lo) = @$_;
+	    if ($hi =~ $color_re) {
+		if ($lo =~ $color_re) {
+		    $line .= ansi_color("$hi/$lo", UHB);
+		} else {
+		    $line .= ansi_color("$hi", UHB);
+		}
+	    }
+	    elsif ($lo =~ $color_re) {
+		$line .= ansi_color("S$lo", UHB);
+	    }
+	    else {
+		$line .= $hi;
+	    }
+	}
+	push @image, "$line\n";
+    }
+    wantarray ? @image : join '', @image;
+}
+
+our $data = do { local $/; <DATA> };
+
+our $image = image($data);
+
+if (__PACKAGE__ eq 'main') {
+    use open IO => ':utf8', ':std';
+    print $image;
+}
+
+__DATA__
+# MIT License
+# 
+# Copyright (c) 2022 sheepla
+# 
+# Permission is hereby granted, free of charge, to any person obtaining a copy
+# of this software and associated documentation files (the "Software"), to deal
+# in the Software without restriction, including without limitation the rights
+# to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+# copies of the Software, and to permit persons to whom the Software is
+# furnished to do so, subject to the following conditions:
+# 
+# The above copyright notice and this permission notice shall be included in all
+# copies or substantial portions of the Software.
+# 
+# THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+# IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+# FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+# AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+# LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+# OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+# SOFTWARE.
+#
+ ...        .     ...   ..    ..     .........           
+ ...        .     ...   ..    ..     .........           
+ ...     ....          ..  ..      ... .....  .. ..      
+ ...     ....          ..  ..      ... .....  .. ..      
+ ...    .......      ...         ... . .....  kkkkk      
+ ...    .......      kkkkkkk     ... . ..... kkkkkkk     
+.....  ........ . kkkkkkkkkkkkk .....  ...  kkkkkkkkk.  .
+.....  ........ kkkkkkkkkkkkkkkkk....  ... kkkkkkkkkk.  .
+ .... ........ kkkkkkkkkkkkkkkkkkk .  ... kkkkkkkkkkkk   
+ .... ........kkkkkkkkkkkkkkkkkkkkk.  ... kkkkkkkkkkkk   
+      ....... kkkwwkkkkkkkkkkkkkkkkk.... kkkkkkkkkkkkk   
+      .......kkkwwwwkkkkkkkkkkkkkkkk.... kkkkkkkkkkkk    
+.    .  .... kkwwKKwwkkkkkkkkkkkwwkkk...kkkkkkkkkkkkk    
+.    .  ....kkkwwKKwwkkkkkkkkkkwwwwkk...kkkkkkkkkkkkk    
+   ..   ....kkkkwwwwkkkrrrrkkkwwKKwwkk. .kkkkkkkkkkkk    
+   ..   ....kkkkkwwkkrrrrrrrrkwwKKwwkk. .kkkkkkkkkkk     
+    .       kkkkkkkkrrrrrrrrrrkwwwwkkk   .kkkkkkkkkk     
+    .        kkkkkkkrrrrrrrrrrkkwwkkkk   . kkkkkkkkk     
+   ....     .kkkkkkkkrrrrrrrrkkkkkkkk.      kkkkkkkk     
+   ....     . kkkkkkkkkrrrrkkkkkkkkkk.      kkkkkkkk     
+  .....      . kkkkkkkkkkkkkkkkkkkkk.        kkkkkkk.    
+  .....      .  kkkkkkkkkkkkkkkkkkkk.        kkkkkkk.    
+......     .. . kkkkkkkkkkkkkkkkkkk. .      .kkkkkkk     
+......     .. .kkkkkkkkkkkkkkkkkkk . .      .kkkkkk      
+......       kkkkkkkkkkkkkkkkkkkkk  .      .kkkkkkk      
+......      kkkkkkkkkkkkkkkkkkkkkkk .      .kkkkkkk      
+......   . kkkkkkkkkkkkkkkkkyyykkkkk   ..  kkkkkkk       
+......   .kkkkkkkkkkkkkkkkyyyWWWWkkkk  .. kkkkkkkk       
+...    . kkkkkkkkkkkkkkkkyyWWWWWWWkkkkk  kkkkkkkk.       
+...    .kkkkkkkkkkkkkkkkyyWWWWWWWWWkkkkkkkkkkkkk .       
+       kkkkkkkkkkkkkkkkyyWWWWWWWWWWWkkkkkkkkkk .         
+       kkkkkkkkkkkkkkkyyWWWWWWWWWWWWWkkkkkkkk  .         
+      kkkkkkkkkkkkkkkyyWWWWWWWWWWWWWWWkkkkk .            
+     kkkkkkkkkkkkkkkkyWWWWWWWWWWWWWWWWWkk   .            
+     kkkkkkkkkkkkkkkyyWWWWWWWWWWWWWWWWWW  ........       
+    kkkkkkkkkkkkkkkkyWWWWWWWWWWWWWWWWWWW  ........       
+  .kkkkkkkkkkkkkkkkyyWWWWWWWWWWWWWWWWWWW    .........    
+  .kkkkkkkkkkkkkkkkyWWWWWWWWWWWWWWWWWWWWW   .........    
+ .kkkkkkkkkkkkkkkkyyWWWWWWWWWWWWWWWWWWWWW       .... . . 
+ .kkkkkkkkkkkkkkkkyWWWWWWWWWWWWWWWWWWWWWW       .... . . 
