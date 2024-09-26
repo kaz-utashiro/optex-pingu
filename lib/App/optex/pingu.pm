@@ -203,6 +203,8 @@ use Scalar::Util;
 use Hash::Util qw(lock_keys);
 *is_number = \&Scalar::Util::looks_like_number;
 
+use App::optex::pingu::Picture;
+
 my $image_dir = $ENV{OPTEX_PINGU_IMAGEDIR} //= dist_dir 'App-optex-pingu';
 
 our %opt = (
@@ -223,10 +225,6 @@ sub hash_to_spec {
 	else                     { "$a=s" }
     } shift->%*;
 }
-
-my %reader = (
-    asc => \&read_asc,
-    );
 
 use App::optex::util::filter qw(io_filter);
 
@@ -253,24 +251,11 @@ sub get_image {
 	first { -s }
 	map {
 	    my $dir = $_;
-	    map { "${dir}${name}$_" } '', '.asc';
+	    map { "${dir}${name}$_" } '', '.asc2', '.asc';
 	} '', "$image_dir/";
     };
     die "$name: image file not found.\n" unless $file;
-    my $type = ($file =~ /\.(\w+$)/)[0] || 'asc';
-    my $reader = $reader{$type} // $reader{'asc'};
-    $reader->($file);
-}
-
-sub read_asc {
-    my $file = shift;
-    open my $fh, '<', $file or die "$file: $!\n";
-    local $_ = do { local $/; <$fh> };
-    s/^#.*\n//mg;
-    s{ (?<str>(?<col>[RGBCMYWK])\g{col}*) }{
-	colorize($+{col}, $opt{char} x length($+{str}))
-    }xgie;
-    /.+/g;
+    App::optex::pingu::Picture::load($file);
 }
 
 sub pingu {
