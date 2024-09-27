@@ -213,7 +213,7 @@ call L<ping(1)> command instead:
 
 =head1 MAKING NEW PING OPTION
 
-You can add, say, B<--with-pingu> option to the original L<ping(1)>
+You can add, say, B<--pingu> option to the original L<ping(1)>
 command.  Make a symbolic link C<< ping->optex >> in F<~/.optex.d/bin>
 directory:
 
@@ -223,7 +223,7 @@ And create an rc file F<~/.optex.d/ping.rc> for B<ping>:
 
     option --pingu -Mpingu
 
-Then pingu will show up when you use B<--with-pingu> option to execute
+Then pingu will show up when you use B<--pingu> option to execute
 L<ping(1)> command:
 
     $ ping --pingu localhost -c15

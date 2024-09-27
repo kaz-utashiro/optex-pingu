@@ -184,7 +184,7 @@ call [ping(1)](http://man.he.net/man1/ping) command instead:
 
 # MAKING NEW PING OPTION
 
-You can add, say, **--with-pingu** option to the original [ping(1)](http://man.he.net/man1/ping)
+You can add, say, **--pingu** option to the original [ping(1)](http://man.he.net/man1/ping)
 command.  Make a symbolic link `ping->optex` in `~/.optex.d/bin`
 directory:
 
@@ -194,7 +194,7 @@ And create an rc file `~/.optex.d/ping.rc` for **ping**:
 
     option --pingu -Mpingu
 
-Then pingu will show up when you use **--with-pingu** option to execute
+Then pingu will show up when you use **--pingu** option to execute
 [ping(1)](http://man.he.net/man1/ping) command:
 
     $ ping --pingu localhost -c15
