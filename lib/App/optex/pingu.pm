@@ -1,6 +1,6 @@
 package App::optex::pingu;
 
-my $VERSION = '0.9901';
+my $VERSION = '1.00';
 
 use v5.24;
 use warnings;
