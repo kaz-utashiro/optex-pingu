@@ -211,6 +211,10 @@ your `~/.optex.d/ping.rc`:
 [App::optex::pingu](https://metacpan.org/pod/App%3A%3Aoptex%3A%3Apingu),
 [https://github.com/kaz-utashiro/optex-pingu/](https://github.com/kaz-utashiro/optex-pingu/)
 
+## ARTICLES
+
+[https://qiita.com/kaz-utashiro/items/abb436d7df349fe84e69](https://qiita.com/kaz-utashiro/items/abb436d7df349fe84e69)
+
 # AUTHOR
 
 Kazumasa Utashiro

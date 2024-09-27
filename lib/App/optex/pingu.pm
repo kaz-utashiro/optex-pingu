@@ -249,6 +249,10 @@ L<https://github.com/kaz-utashiro/optex/>
 L<App::optex::pingu>,
 L<https://github.com/kaz-utashiro/optex-pingu/>
 
+=head2 ARTICLES
+
+L<https://qiita.com/kaz-utashiro/items/abb436d7df349fe84e69>
+
 =head1 AUTHOR
 
 Kazumasa Utashiro
