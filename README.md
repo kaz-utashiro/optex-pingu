@@ -34,19 +34,16 @@ features.
 - **--image**=_file_
 
     Set image file.  File is searched at current directory and module
-    directory.  Standard **pingu** image is stored as **pingu.asc**.  If
+    directory.  Standard **pingu** image is stored as `pingu.asc2`.  If
     string `pingu` is specified, module search the file in the following
     order.
 
         ./pingu
+        ./pingu.asc2
         ./pingu.asc
         module-dir/pingu
+        module-dir/pingu.asc2
         module-dir/pingu.asc
-
-- **--char**=_c_
-
-    Specify replacement character.  Default is Unicode `FULL BLOCK`
-    (U+2588: █).
 
 - **--interval**=_sec_
 
@@ -220,7 +217,7 @@ Kazumasa Utashiro
 
 # LICENSE
 
-Copyright 2022-2024 Kazumasa Utashiro.
+Copyright ©︎ 2022-2024 Kazumasa Utashiro.
 
 You can redistribute it and/or modify it under the same terms
 as Perl itself.

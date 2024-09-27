@@ -52,19 +52,25 @@ Produce images.  Enabled by default.
 =item B<--image>=I<file>
 
 Set image file.  File is searched at current directory and module
-directory.  Standard B<pingu> image is stored as B<pingu.asc>.  If
+directory.  Standard B<pingu> image is stored as F<pingu.asc2>.  If
 string C<pingu> is specified, module search the file in the following
 order.
 
     ./pingu
+    ./pingu.asc2
     ./pingu.asc
     module-dir/pingu
+    module-dir/pingu.asc2
     module-dir/pingu.asc
+
+=begin comment
 
 =item B<--char>=I<c>
 
 Specify replacement character.  Default is Unicode C<FULL BLOCK>
 (U+2588: █).
+
+=end comment
 
 =item B<--interval>=I<sec>
 
@@ -249,7 +255,7 @@ Kazumasa Utashiro
 
 =head1 LICENSE
 
-Copyright 2022-2024 Kazumasa Utashiro.
+Copyright ©︎ 2022-2024 Kazumasa Utashiro.
 
 You can redistribute it and/or modify it under the same terms
 as Perl itself.
