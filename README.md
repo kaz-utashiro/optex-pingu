@@ -55,7 +55,7 @@ features.
 
 # IMAGE FILE FORMAT
 
-- ASCII
+- ASCII (`.asc`)
 
     Each \[`RGBCMYWKrgbcmywk`\] character is converted to specified letter
     with color which the character itself describe.  Upper-case character
@@ -72,7 +72,7 @@ features.
 
     Line start with `#` is treated as a comment.
 
-    Default pingu image:
+    `pingu.asc`:
 
          ...        .     ...   ..    ..     .........           
          ...     ....          ..  ..      ... .....  .. ..      
@@ -94,6 +94,62 @@ features.
              kkkkkkkkkkkkkkkywwwwwwwwwwwwwwwwwww  ........       
           .kkkkkkkkkkkkkkkkywwwwwwwwwwwwwwwwwwww    .........    
          .kkkkkkkkkkkkkkkkywwwwwwwwwwwwwwwwwwwwww       .... . . 
+
+    <div>
+            <p><img width="750" src="https://raw.githubusercontent.com/kaz-utashiro/optex-pingu/refs/heads/main/images/pingu-light.png">
+    </div>
+
+    <div>
+            <p><img width="750" src="https://raw.githubusercontent.com/kaz-utashiro/optex-pingu/refs/heads/main/images/pingu-dark.png">
+    </div>
+
+- ASCII2 (`.asc2`)
+
+    Each pixel is represented by two blocks, one in the upper half and one
+    in the lower half, with each color represented by two lines of data.
+
+    `pingu.asc2`:
+
+         ...        .     ...   ..    ..     .........           
+         ...        .     ...   ..    ..     .........           
+         ...     ....          ..  ..      ... .....  .. ..      
+         ...     ....          ..  ..      ... .....  .. ..      
+         ...    .......      ...         ... . .....  kkkkk      
+         ...    .......      kkkkkkk     ... . ..... kkkkkkk     
+        .....  ........ . kkkkkkkkkkkkk .....  ...  kkkkkkkkk.  .
+        .....  ........ kkkkkkkkkkkkkkkkk....  ... kkkkkkkkkk.  .
+         .... ........ kkkkkkkkkkkkkkkkkkk .  ... kkkkkkkkkkkk   
+         .... ........kkkkkkkkkkkkkkkkkkkkk.  ... kkkkkkkkkkkk   
+              ....... kkkwwkkkkkkkkkkkkkkkkk.... kkkkkkkkkkkkk   
+              .......kkkwwwwkkkkkkkkkkkkkkkk.... kkkkkkkkkkkk    
+        .    .  .... kkwwKKwwkkkkkkkkkkkwwkkk...kkkkkkkkkkkkk    
+        .    .  ....kkkwwKKwwkkkkkkkkkkwwwwkk...kkkkkkkkkkkkk    
+           ..   ....kkkkwwwwkkkkkkkkkkwwKKwwkk. .kkkkkkkkkkkk    
+           ..   ....kkkkkwwkkkkrrrrkkkwwKKwwkk. .kkkkkkkkkkk     
+            .       kkkkkkkkkrrrrrrrrkkwwwwkkk   .kkkkkkkkkk     
+            .        kkkkkkkrrrrrrrrrrkkwwkkkk   . kkkkkkkkk     
+           ....     .kkkkkkkrrrrrrrrrrkkkkkkk.      kkkkkkkk     
+           ....     . kkkkkkkrrrrrrrrkkkkkkkk.      kkkkkkkk     
+          .....      . kkkkkkkkrrrrkkkkkkkkk.        kkkkkkk.    
+          .....      .  kkkkkkkkkkkkkkkkkkkk.        kkkkkkk.    
+        ......     .. .  kkkkkkkkkkkkkkkkkk. .      .kkkkkkk     
+        ......     .. . kkkkkkkkkkkkkkkkk  . .      .kkkkkk      
+        ......        kkkkkkkkkkkkkkkkkkkk  .      .kkkkkkk      
+        ......      kkkkkkkkkkkkkkkkkkkkkkk .      .kkkkkkk      
+        ......   . kkkkkkkkkkkkkkkkkyyykkkkk   ..  kkkkkkk       
+        ......   .kkkkkkkkkkkkkkkkyyyWWWWkkkk  .. kkkkkkkk       
+        ...    . kkkkkkkkkkkkkkkkyyWWWWWWWkkkkk  kkkkkkkk.       
+        ...    .kkkkkkkkkkkkkkkkyyWWWWWWWWWkkkkkkkkkkkkk .       
+               kkkkkkkkkkkkkkkkyyWWWWWWWWWWWkkkkkkkkkk .         
+               kkkkkkkkkkkkkkkyyWWWWWWWWWWWWWkkkkkkkk  .         
+              kkkkkkkkkkkkkkkyyWWWWWWWWWWWWWWWkkkkk .            
+             kkkkkkkkkkkkkkkkyWWWWWWWWWWWWWWWWWkk   .            
+             kkkkkkkkkkkkkkkyyWWWWWWWWWWWWWWWWW   ........       
+            kkkkkkkkkkkkkkkkyWWWWWWWWWWWWWWWWWWW  ........       
+          .kkkkkkkkkkkkkkkkyyWWWWWWWWWWWWWWWWWWW    .........    
+          .kkkkkkkkkkkkkkkkyWWWWWWWWWWWWWWWWWWWWW   .........    
+         .kkkkkkkkkkkkkkkkyyWWWWWWWWWWWWWWWWWWWWW       .... . . 
+         .kkkkkkkkkkkkkkkkyWWWWWWWWWWWWWWWWWWWWWW       .... . . 
 
 Other file format is not supported yet.
 

@@ -77,7 +77,7 @@ Default is 0.1 seconds.
 
 =over 4
 
-=item ASCII
+=item ASCII (C<.asc>)
 
 Each [C<RGBCMYWKrgbcmywk>] character is converted to specified letter
 with color which the character itself describe.  Upper-case character
@@ -94,7 +94,7 @@ represent normal ANSI color and lower-case means high-intensity color.
 
 Line start with C<#> is treated as a comment.
 
-Default pingu image:
+C<pingu.asc>:
 
      ...        .     ...   ..    ..     .........           
      ...     ....          ..  ..      ... .....  .. ..      
@@ -116,6 +116,67 @@ Default pingu image:
          kkkkkkkkkkkkkkkywwwwwwwwwwwwwwwwwww  ........       
       .kkkkkkkkkkkkkkkkywwwwwwwwwwwwwwwwwwww    .........    
      .kkkkkkkkkkkkkkkkywwwwwwwwwwwwwwwwwwwwww       .... . . 
+
+=begin html
+
+<p><img width="750" src="https://raw.githubusercontent.com/kaz-utashiro/optex-pingu/refs/heads/main/images/pingu-light.png">
+
+=end html
+
+=begin html
+
+<p><img width="750" src="https://raw.githubusercontent.com/kaz-utashiro/optex-pingu/refs/heads/main/images/pingu-dark.png">
+
+=end html
+
+=item ASCII2 (C<.asc2>)
+
+Each pixel is represented by two blocks, one in the upper half and one
+in the lower half, with each color represented by two lines of data.
+
+C<pingu.asc2>:
+
+     ...        .     ...   ..    ..     .........           
+     ...        .     ...   ..    ..     .........           
+     ...     ....          ..  ..      ... .....  .. ..      
+     ...     ....          ..  ..      ... .....  .. ..      
+     ...    .......      ...         ... . .....  kkkkk      
+     ...    .......      kkkkkkk     ... . ..... kkkkkkk     
+    .....  ........ . kkkkkkkkkkkkk .....  ...  kkkkkkkkk.  .
+    .....  ........ kkkkkkkkkkkkkkkkk....  ... kkkkkkkkkk.  .
+     .... ........ kkkkkkkkkkkkkkkkkkk .  ... kkkkkkkkkkkk   
+     .... ........kkkkkkkkkkkkkkkkkkkkk.  ... kkkkkkkkkkkk   
+          ....... kkkwwkkkkkkkkkkkkkkkkk.... kkkkkkkkkkkkk   
+          .......kkkwwwwkkkkkkkkkkkkkkkk.... kkkkkkkkkkkk    
+    .    .  .... kkwwKKwwkkkkkkkkkkkwwkkk...kkkkkkkkkkkkk    
+    .    .  ....kkkwwKKwwkkkkkkkkkkwwwwkk...kkkkkkkkkkkkk    
+       ..   ....kkkkwwwwkkkkkkkkkkwwKKwwkk. .kkkkkkkkkkkk    
+       ..   ....kkkkkwwkkkkrrrrkkkwwKKwwkk. .kkkkkkkkkkk     
+        .       kkkkkkkkkrrrrrrrrkkwwwwkkk   .kkkkkkkkkk     
+        .        kkkkkkkrrrrrrrrrrkkwwkkkk   . kkkkkkkkk     
+       ....     .kkkkkkkrrrrrrrrrrkkkkkkk.      kkkkkkkk     
+       ....     . kkkkkkkrrrrrrrrkkkkkkkk.      kkkkkkkk     
+      .....      . kkkkkkkkrrrrkkkkkkkkk.        kkkkkkk.    
+      .....      .  kkkkkkkkkkkkkkkkkkkk.        kkkkkkk.    
+    ......     .. .  kkkkkkkkkkkkkkkkkk. .      .kkkkkkk     
+    ......     .. . kkkkkkkkkkkkkkkkk  . .      .kkkkkk      
+    ......        kkkkkkkkkkkkkkkkkkkk  .      .kkkkkkk      
+    ......      kkkkkkkkkkkkkkkkkkkkkkk .      .kkkkkkk      
+    ......   . kkkkkkkkkkkkkkkkkyyykkkkk   ..  kkkkkkk       
+    ......   .kkkkkkkkkkkkkkkkyyyWWWWkkkk  .. kkkkkkkk       
+    ...    . kkkkkkkkkkkkkkkkyyWWWWWWWkkkkk  kkkkkkkk.       
+    ...    .kkkkkkkkkkkkkkkkyyWWWWWWWWWkkkkkkkkkkkkk .       
+           kkkkkkkkkkkkkkkkyyWWWWWWWWWWWkkkkkkkkkk .         
+           kkkkkkkkkkkkkkkyyWWWWWWWWWWWWWkkkkkkkk  .         
+          kkkkkkkkkkkkkkkyyWWWWWWWWWWWWWWWkkkkk .            
+         kkkkkkkkkkkkkkkkyWWWWWWWWWWWWWWWWWkk   .            
+         kkkkkkkkkkkkkkkyyWWWWWWWWWWWWWWWWW   ........       
+        kkkkkkkkkkkkkkkkyWWWWWWWWWWWWWWWWWWW  ........       
+      .kkkkkkkkkkkkkkkkyyWWWWWWWWWWWWWWWWWWW    .........    
+      .kkkkkkkkkkkkkkkkyWWWWWWWWWWWWWWWWWWWWW   .........    
+     .kkkkkkkkkkkkkkkkyyWWWWWWWWWWWWWWWWWWWWW       .... . . 
+     .kkkkkkkkkkkkkkkkyWWWWWWWWWWWWWWWWWWWWWW       .... . . 
+
 
 =back
 
