@@ -15,11 +15,11 @@ command, see ["SEE ALSO"](#see-also) section.  All honor for this idea should go
 to the original author.
 
 <div>
-    <p><img width="750" src="https://raw.githubusercontent.com/kaz-utashiro/optex-pingu/main/images/pingu-black.png">
+    <p><img width="750" src="https://raw.githubusercontent.com/kaz-utashiro/optex-pingu/refs/heads/main/images/pingu2-light.png">
 </div>
 
 <div>
-    <p><img width="750" src="https://raw.githubusercontent.com/kaz-utashiro/optex-pingu/main/images/pingu-white.png">
+    <p><img width="750" src="https://raw.githubusercontent.com/kaz-utashiro/optex-pingu/refs/heads/main/images/pingu2-dark.png">
 </div>
 
 This module is a quite good example to demonstrate [optex(1)](http://man.he.net/man1/optex) command

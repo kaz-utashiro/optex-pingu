@@ -28,13 +28,13 @@ to the original author.
 
 =begin html
 
-<p><img width="750" src="https://raw.githubusercontent.com/kaz-utashiro/optex-pingu/main/images/pingu-black.png">
+<p><img width="750" src="https://raw.githubusercontent.com/kaz-utashiro/optex-pingu/refs/heads/main/images/pingu2-light.png">
 
 =end html
 
 =begin html
 
-<p><img width="750" src="https://raw.githubusercontent.com/kaz-utashiro/optex-pingu/main/images/pingu-white.png">
+<p><img width="750" src="https://raw.githubusercontent.com/kaz-utashiro/optex-pingu/refs/heads/main/images/pingu2-dark.png">
 
 =end html
 
