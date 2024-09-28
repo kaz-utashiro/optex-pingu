@@ -57,9 +57,11 @@ string C<pingu> is specified, module search the file in the following
 order.
 
     ./pingu
+    ./pingu.asc4
     ./pingu.asc2
     ./pingu.asc
     module-dir/pingu
+    module-dir/pingu.asc4
     module-dir/pingu.asc2
     module-dir/pingu.asc
 
@@ -322,7 +324,7 @@ sub get_image {
 	first { -s }
 	map {
 	    my $dir = $_;
-	    map { "${dir}${name}$_" } '', '.asc2', '.asc';
+	    map { "${dir}${name}$_" } '', '.asc4', '.asc2', '.asc';
 	} '', "$image_dir/";
     };
     die "$name: image file not found.\n" unless $file;

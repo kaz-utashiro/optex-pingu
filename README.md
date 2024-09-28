@@ -39,9 +39,11 @@ features.
     order.
 
         ./pingu
+        ./pingu.asc4
         ./pingu.asc2
         ./pingu.asc
         module-dir/pingu
+        module-dir/pingu.asc4
         module-dir/pingu.asc2
         module-dir/pingu.asc
 
