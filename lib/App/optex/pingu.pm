@@ -15,6 +15,10 @@ use Data::Dumper;
 
 pingu - optex make-everything-pingu filter
 
+=head1 VERSION
+
+Version 1.01
+
 =head1 SYNOPSIS
 
 B<optex> -Mpingu [ options -- ] I<command>

@@ -3,6 +3,10 @@
 
 pingu - optex make-everything-pingu filter
 
+# VERSION
+
+Version 1.01
+
 # SYNOPSIS
 
 **optex** -Mpingu \[ options -- \] _command_
