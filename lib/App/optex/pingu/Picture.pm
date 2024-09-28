@@ -62,7 +62,7 @@ sub read_asc_1 {
 sub squeeze {
     map @$_, reduce {
 	my $x = $a->[-1];
-	if ($x && all { $x->[$_] eq $b->[$_] } 0 .. $#{$b}) {
+	if ($x && all { $x->[$_] eq $b->[$_] } keys @$b) {
 	    $x->[-1]++;
 	} else {
 	    push @$a, [ @$b, 1 ];
@@ -106,7 +106,7 @@ sub read_asc_2 {
     for (pairs @data) {
 	my($hi, $lo) = @$_;
 	my @data = squeeze zip [ $hi =~ /\X/g ], [ $lo =~ /\X/g ];
-	my $line = join '', map stringify2($_), @data;
+	my $line = join '', map stringify_2($_), @data;
 	push @image, $line;
     }
     wantarray ? @image : join('', map "$_\n", @image);
@@ -116,27 +116,27 @@ sub read_asc_2 {
 
 my %elements = (
     "0"    => '',    #
-    "1"    => FB,    #
+    "1"    => FB,    # █
     "00"   => '',    #
-    "10"   => THB,   #
-    "01"   => BHB,   #
-    "11"   => FB,    #
+    "10"   => THB,   # ▀
+    "01"   => BHB,   # ▄
+    "11"   => FB,    # █
     "0000" => '',    #
-    "0001" => QLR,   #
-    "0010" => QLL,   #
-    "0011" => BHB,   #
-    "0100" => QUR,   #
-    "0101" => RHB,   #
-    "0110" => QURLL, #
-    "0111" => QULx,  #
-    "1000" => QUL,   #
-    "1001" => QULLR, #
-    "1010" => LHB,   #
-    "1011" => QURx,  #
-    "1100" => THB,   #
-    "1101" => QLLx,  #
-    "1110" => QLRx,  #
-    "1111" => FB,    #
+    "0001" => QLR,   # ▗
+    "0010" => QLL,   # ▖
+    "0011" => BHB,   # ▄
+    "0100" => QUR,   # ▝
+    "0101" => RHB,   # ▐
+    "0110" => QURLL, # ▞
+    "0111" => QULx,  # ▟
+    "1000" => QUL,   # ▘
+    "1001" => QULLR, # ▚
+    "1010" => LHB,   # ▄
+    "1011" => QURx,  # ▙
+    "1100" => THB,   # ▀
+    "1101" => QLLx,  # ▜
+    "1110" => QLRx,  # ▛
+    "1111" => FB,    # █
 );
 
 sub stringify {
@@ -170,8 +170,8 @@ sub read_asc {
     @data % 2 and die;
     my @image;
     while (my @y = splice(@data, 0, $y)) {
-	my @data = squeeze zip map { [ /\X{$x}/g ] } @y;
-	my $line = join '', map stringify($_), @data;
+	my @sequence = squeeze zip map { [ /\X{$x}/g ] } @y;
+	my $line = join '', map stringify($_), @sequence;
 	push @image, $line;
     }
     wantarray ? @image : join('', map "$_\n", @image);
