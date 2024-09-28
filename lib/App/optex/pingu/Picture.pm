@@ -115,33 +115,42 @@ sub read_asc2 {
 
 ######################################################################
 
+my @quadrant = (
+    '',    # 0000
+    QLR,   # 0001
+    QLL,   # 0010
+    BHB,   # 0011
+    QUR,   # 0100
+    RHB,   # 0101
+    QURLL, # 0110
+    QULx,  # 0111
+    QUL,   # 1000
+    QULLR, # 1001
+    LHB,   # 1010
+    QURx,  # 1011
+    THB,   # 1100
+    QLLx,  # 1101
+    QLRx,  # 1110
+    FB,	   # 1111
+);
+
 sub stringify4 {
     my($hi, $lo, $n) = @{+shift};
-    $n //= 1;
-    local $_ = $hi . $lo;
-    my $r = $color_re;
-    my($f, $b, $ch);
-    if    (/($r)\1\1\1/x)  { ($f,$b)=($1,$2); $ch=FB; }
-    elsif (/($r)\1\1(.)/x) { ($f,$b)=($1,$2); $ch=QLRx; }
-    elsif (/($r)\1(.)\1/x) { ($f,$b)=($1,$2); $ch=QLLx; }
-    elsif (/($r)\1(.) ./x) { ($f,$b)=($1,$2); $ch=THB; }
-    elsif (/($r)(.)\1\1/x) { ($f,$b)=($1,$2); $ch=QURx; }
-    elsif (/($r)(.)\1 ./x) { ($f,$b)=($1,$2); $ch=LHB; }
-    elsif (/($r)(.) .\1/x) { ($f,$b)=($1,$2); $ch=QULLR; }
-    elsif (/($r)(.) . ./x) { ($f,$b)=($1,$2); $ch=QUL; }
-    elsif (/(.)($r)\2\2/x) { ($f,$b)=($2,$1); $ch=QULx; }
-    elsif (/(.)($r)\2 ./x) { ($f,$b)=($2,$1); $ch=QURLL; }
-    elsif (/(.)($r) .\2/x) { ($f,$b)=($2,$1); $ch=RHB; }
-    elsif (/(.)($r) . ./x) { ($f,$b)=($2,$1); $ch=QUR; }
-    elsif (/(.) .($r)\2/x) { ($f,$b)=($2,$1); $ch=BHB; }
-    elsif (/(.) .($r) ./x) { ($f,$b)=($2,$1); $ch=QLL; }
-    elsif (/(.) . .($r)/x) { ($f,$b)=($2,$1); $ch=QLR; }
-    elsif (/(.) . . .()/x) {                  $ch=$1; }
-    else                   { die }
-    $f //= ''; $b //= '';
-    my $s = $ch x $n;
-    if (my $color = $f) {
-	$color .= "/$b" if $b =~ /$color_re/;
+    my $quad = $hi . $lo;
+    my $fg = ($quad =~ /($color_re)/)[0] // '';
+    my $bg = ($quad =~ /([^$fg\n])/)[0] // '';
+    my $ch = (state $cache = {})->{$quad} //= do {
+	if (!$fg) {
+	    substr $hi, 0, 1;
+	} else {
+	    my $bit = $quad =~ s/(.)/int($1 eq $fg)/ger;
+	    my $index = oct "0b$bit";
+	    $quadrant[$index] // die;
+	}
+    };
+    my $s = $ch x $n // 1;
+    if (my $color = $fg) {
+	$color .= "/$bg" if $bg =~ /$color_re/;
 	$s = ansi_color($color, $s);
     }
     $s;
