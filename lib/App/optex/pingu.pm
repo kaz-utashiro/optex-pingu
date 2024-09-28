@@ -227,8 +227,8 @@ C<pingu.asc4>:
 
 =back
 
-Coloring is done by L<Getopt::EX::Colormap> module.  See its document
-for detail.
+Coloring is done by L<Term::ANSIColor::Concise> module.  See its
+document for detail.
 
 =head1 INSTALL
 
@@ -307,7 +307,6 @@ as Perl itself.
 
 use File::Share qw(dist_dir);
 use List::Util qw(first pairmap);
-use Getopt::EX::Colormap qw(colorize);
 use Time::HiRes qw(usleep);
 use Scalar::Util;
 use Hash::Util qw(lock_keys);
