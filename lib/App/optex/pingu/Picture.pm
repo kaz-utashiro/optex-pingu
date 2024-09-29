@@ -24,6 +24,7 @@ use constant {
     QLR   => "\N{QUADRANT LOWER RIGHT}",
     QULLR => "\N{QUADRANT UPPER LEFT AND LOWER RIGHT}",
     QURLL => "\N{QUADRANT UPPER RIGHT AND LOWER LEFT}",
+    Q____ => " ",
     Qxx__ => "\N{UPPER HALF BLOCK}",
     Q__xx => "\N{LOWER HALF BLOCK}",
     Qx_x_ => "\N{LEFT HALF BLOCK}",
@@ -72,28 +73,28 @@ sub squash {
 }
 
 my %element = (
-    "0"    => '',    #
-    "1"    => FB,    # █
-    "00"   => '',    #
-    "10"   => THB,   # ▀
-    "01"   => BHB,   # ▄
-    "11"   => FB,    # █
-    "0000" => '',    #
-    "0001" => Q___x, # ▗
-    "0010" => Q__x_, # ▖
-    "0011" => Q__xx, # ▄
-    "0100" => Q_x__, # ▝
-    "0101" => Q_x_x, # ▐
-    "0110" => Q_xx_, # ▞
-    "0111" => Q_xxx, # ▟
-    "1000" => Qx___, # ▘
-    "1001" => Qx__x, # ▚
-    "1010" => Qx_x_, # ▄
-    "1011" => Qx_xx, # ▙
-    "1100" => Qxx__, # ▀
-    "1101" => Qxx_x, # ▜
-    "1110" => Qxxx_, # ▛
-    "1111" => Qxxxx, # █
+    "0"    => Q____ , #
+    "1"    => Qxxxx , # █
+    "00"   => Q____ , #
+    "10"   => Qxx__ , # ▀
+    "01"   => Q__xx , # ▄
+    "11"   => Qxxxx , # █
+    "0000" => Q____ , #
+    "0001" => Q___x , # ▗
+    "0010" => Q__x_ , # ▖
+    "0011" => Q__xx , # ▄
+    "0100" => Q_x__ , # ▝
+    "0101" => Q_x_x , # ▐
+    "0110" => Q_xx_ , # ▞
+    "0111" => Q_xxx , # ▟
+    "1000" => Qx___ , # ▘
+    "1001" => Qx__x , # ▚
+    "1010" => Qx_x_ , # ▄
+    "1011" => Qx_xx , # ▙
+    "1100" => Qxx__ , # ▀
+    "1101" => Qxx_x , # ▜
+    "1110" => Qxxx_ , # ▛
+    "1111" => Qxxxx , # █
 );
 
 sub stringify {
