@@ -1,6 +1,6 @@
 package App::optex::pingu;
 
-my $VERSION = '1.01';
+my $VERSION = '1.02';
 
 use v5.24;
 use warnings;
@@ -17,7 +17,7 @@ pingu - optex make-everything-pingu filter
 
 =head1 VERSION
 
-Version 1.01
+Version 1.02
 
 =head1 SYNOPSIS
 
