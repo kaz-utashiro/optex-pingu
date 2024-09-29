@@ -380,6 +380,7 @@ sub pingu {
     while (<>) {
 	print $image[$i++ % @image] if $pingu;
 	print $_;
+	last if eof;
 	usleep $sleep if $sleep > 0;
     }
 }
