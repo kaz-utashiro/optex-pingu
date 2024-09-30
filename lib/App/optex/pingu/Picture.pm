@@ -24,7 +24,7 @@ use constant {
     QLR   => "\N{QUADRANT LOWER RIGHT}",
     QULLR => "\N{QUADRANT UPPER LEFT AND LOWER RIGHT}",
     QURLL => "\N{QUADRANT UPPER RIGHT AND LOWER LEFT}",
-    Q____ => " ",
+    Q____ => "\N{SPACE}",
     Qxx__ => "\N{UPPER HALF BLOCK}",
     Q__xx => "\N{LOWER HALF BLOCK}",
     Qx_x_ => "\N{LEFT HALF BLOCK}",
@@ -124,8 +124,8 @@ sub read_asc {
     @data % $y                  and die "data format error.";
     any { (length) % $x } @data and die "data format error.";
     my @image;
-    while (my @y = splice(@data, 0, $y)) {
-	my @sequence = squash zip map { [ /\X{$x}/g ] } @y;
+    while (my @y = splice @data, 0, $y) {
+	my @sequence = squash zip map [ /\X{$x}/g ], @y;
 	my $line = join '', map stringify($_), @sequence;
 	push @image, $line;
     }
