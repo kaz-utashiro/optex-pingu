@@ -296,6 +296,19 @@ L<https://github.com/kaz-utashiro/optex-pingu/>
 
 L<https://qiita.com/kaz-utashiro/items/abb436d7df349fe84e69>
 
+=head2 MOVIE
+
+L<https://youtu.be/Al5HouQqIy8?si=imNjqLsCY8CKmQwu>
+
+=begin html
+
+<p>
+<a href="https://youtu.be/Al5HouQqIy8?si=imNjqLsCY8CKmQwu">
+<img width="500" src="https://raw.githubusercontent.com/kaz-utashiro/optex-pingu/refs/heads/main/images/movie.png">
+</a>
+
+=end html
+
 =head1 AUTHOR
 
 Kazumasa Utashiro

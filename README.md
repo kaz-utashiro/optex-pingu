@@ -255,6 +255,17 @@ your `~/.optex.d/ping.rc`:
 
 [https://qiita.com/kaz-utashiro/items/abb436d7df349fe84e69](https://qiita.com/kaz-utashiro/items/abb436d7df349fe84e69)
 
+## MOVIE
+
+[https://youtu.be/Al5HouQqIy8?si=imNjqLsCY8CKmQwu](https://youtu.be/Al5HouQqIy8?si=imNjqLsCY8CKmQwu)
+
+<div>
+    <p>
+    <a href="https://youtu.be/Al5HouQqIy8?si=imNjqLsCY8CKmQwu">
+    <img width="500" src="https://raw.githubusercontent.com/kaz-utashiro/optex-pingu/refs/heads/main/images/movie.png">
+    </a>
+</div>
+
 # AUTHOR
 
 Kazumasa Utashiro
